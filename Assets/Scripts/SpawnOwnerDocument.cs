@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnDocument : MonoBehaviour
+public class SpawnOwnerDocument : MonoBehaviour
 {
     public GameObject document;
     void OnMouseDown()

@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReceiveDocument : MonoBehaviour
+public class ReturneeReceiveDocument : MonoBehaviour
 {
     public float force = 20.0f;
     private bool receiving = true;
     
-
     void OnTriggerEnter2D(Collider2D col)
     {
-
         if (receiving && col.tag == "Document")
         {
             if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == string.Empty){
