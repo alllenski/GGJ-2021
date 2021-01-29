@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnDocument : MonoBehaviour
 {
-
     public GameObject document;
     void OnMouseDown()
     {
