@@ -12,6 +12,8 @@ class DragTransform : MonoBehaviour
  
     void OnMouseDown()
     {
+        gameObject.GetComponent<LerpMovement>().paused = true;
+
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         dragging = true;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -21,6 +23,8 @@ class DragTransform : MonoBehaviour
  
     void OnMouseUp()
     {
+        gameObject.GetComponent<LerpMovement>().paused = false;
+
         dragging = false;
     }
  

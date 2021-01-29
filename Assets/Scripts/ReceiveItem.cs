@@ -17,11 +17,8 @@ public class ReceiveItem : MonoBehaviour
         }  
         else
         {
-            
             Vector2 destination = new Vector2(transform.position.x, transform.position.y - 4.0f);
-            col.gameObject.GetComponent<DragTransform>().dragging = false;
-            col.gameObject.GetComponent<LerpMovement>().moveTo(destination, 2f);
-            
+            col.gameObject.GetComponent<LerpMovement>().moveTo(destination, 3f);
         }   
     }
 

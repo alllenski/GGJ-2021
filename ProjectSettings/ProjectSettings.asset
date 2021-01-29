@@ -615,7 +615,7 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Analytics: 1
+    Analytics: 0
     Build: 0
     Collab: 0
     Game Performance: 0
@@ -635,10 +635,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 3130b861-286e-4403-af04-6481f76b9eaf
+  cloudProjectId: d762cbb2-d540-4ae4-922b-6b403fed5fbc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Lost and Found
+  projectName: Lost and Found (1)
   organizationId: allenrada21
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
