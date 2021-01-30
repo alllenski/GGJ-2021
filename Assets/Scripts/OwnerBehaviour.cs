@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReturneeBehavior : MonoBehaviour
+public class OwnerBehaviour : MonoBehaviour
 {
     float timer = 0;
     string objectFound; 
     string objectColour;
     string objectDetails;
-    bool objectSpawn = false;
     public float recievedDocumentTimer = -5;
     GameObject GameManager;
 
@@ -22,13 +21,6 @@ public class ReturneeBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 1f && objectSpawn == false)
-        {
-            gameObject.GetComponent<SpawnItem>().spawnItem();
-            objectSpawn = true;
-        }
-
         if (recievedDocumentTimer > 0)
         {
             recievedDocumentTimer -= Time.deltaTime;
@@ -42,7 +34,7 @@ public class ReturneeBehavior : MonoBehaviour
         {
             Debug.Log("I am gone");
             Destroy(gameObject);
-            GameManager.GetComponent<GameManager>().returneeSpawned = false;
+            GameManager.GetComponent<GameManager>().ownerSpawned = false;
         }
         else if (recievedDocumentTimer < -1)
         {

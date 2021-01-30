@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SpawnItem : MonoBehaviour
 {
-   
+    
     public GameObject prefab;
 
-    void spawnItem() 
+    public void spawnItem() 
     {
         GameObject item = Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
         item.GetComponent<LerpMovement>().moveTo(new Vector2(gameObject.transform.position.x,
