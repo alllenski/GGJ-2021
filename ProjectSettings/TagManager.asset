@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Undefined
-  - Document
+  - Item
+  - Returnee Document
+  - Owner Document
   layers:
   - Default
   - TransparentFX
