@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (phaseTwoTimer < 20f && phaseTwo)
         {
             phaseTwoTimer += Time.deltaTime;
-            if (ownerSpawned == false)
+            if (ownerSpawned == false && foundObjects.Count != 0)
             {
                 GameObject Owner = Instantiate(OwnerPreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
                 random = Random.Range(0, foundObjects.Count - 1);
