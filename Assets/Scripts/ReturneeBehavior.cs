@@ -5,10 +5,12 @@ using UnityEngine;
 public class ReturneeBehavior : MonoBehaviour
 {
     float timer = 0;
-    string objectFound; 
-    string objectColour;
-    string objectDetails;
-    bool objectSpawn = false;
+    
+    public string objectFound; 
+    public string objectColour;
+    public string objectDetails;
+
+    public bool objectSpawn = false;
     public float recievedDocumentTimer = -5;
     GameObject GameManager;
 
@@ -25,12 +27,21 @@ public class ReturneeBehavior : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1f && objectSpawn == false)
         {
-            gameObject.GetComponent<SpawnItem>().spawnItem();
+            GameObject itemReturnee = gameObject.GetComponent<SpawnItem>().spawnItem();
+            objectFound = itemReturnee.GetComponent<ItemDetails>().itemName;
+            objectColour = itemReturnee.GetComponent<ItemDetails>().itemColour;
+            objectDetails = itemReturnee.GetComponent<ItemDetails>().itemDetails;
+            
+            gameObject.GetComponent<ReturneeReceiveDocument>().receiving = true;
+
+            GameManager.GetComponent<GameManager>().foundObjects.Add(itemReturnee);
+
             objectSpawn = true;
         }
 
         if (recievedDocumentTimer > 0)
         {
+            gameObject.GetComponent<ReturneeReceiveDocument>().receiving = false;
             recievedDocumentTimer -= Time.deltaTime;
         }
         else if (recievedDocumentTimer < 0 && recievedDocumentTimer > -1)
@@ -40,8 +51,8 @@ public class ReturneeBehavior : MonoBehaviour
         }
         else if (recievedDocumentTimer < -2 && recievedDocumentTimer > -5)
         {
-            Debug.Log("I am gone");
             Destroy(gameObject);
+            gameObject.GetComponent<ReturneeReceiveDocument>().received = false;
             GameManager.GetComponent<GameManager>().returneeSpawned = false;
         }
         else if (recievedDocumentTimer < -1)
@@ -49,4 +60,5 @@ public class ReturneeBehavior : MonoBehaviour
             recievedDocumentTimer -= Time.deltaTime;
         }
     }
+
 }

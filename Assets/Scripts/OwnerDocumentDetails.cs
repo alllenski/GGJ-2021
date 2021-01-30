@@ -9,11 +9,11 @@ public class OwnerDocumentDetails : MonoBehaviour
   public string objectColour = string.Empty;
   public string signature = string.Empty;
 
-  public int score = 0;
-
   void OnMouseDown()
   {
     Debug.Log(objectLost);
+    Debug.Log(objectDetails);
+    Debug.Log(objectColour);
     Debug.Log(signature);
   }
 

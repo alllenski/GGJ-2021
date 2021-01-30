@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class ItemDetails : MonoBehaviour
 {
-    string itemName = "hatdog";
-    string itemDetails; 
-    string itemColour;
+    public string itemName;
+    public string itemDetails; 
+    public string itemColour;
 
-    void OnMouseDown()
-    {
-        Debug.Log(itemName);
-    }
+   
 
 }

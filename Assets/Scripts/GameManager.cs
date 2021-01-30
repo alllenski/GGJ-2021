@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
     public GameObject ReturneePreFab; 
     public GameObject OwnerPreFab;
 
+    public List<GameObject> foundObjects = new List<GameObject>();
+
+    public List<string> allNames = new List<string>(new string []
+    {
+        "Sam", "Allen", "Ma-I", "Matthew", "Miguel", "Jonathan", "Hanz", "Dylan", "Gene", "Jericho", "Claude", "Greg", "Jones", "Royce", "Jake", "Julius"
+    });
+
     public bool returneeSpawned = true;
     public bool ownerSpawned = false;
 
@@ -17,50 +24,57 @@ public class GameManager : MonoBehaviour
     public bool phaseOne = true;
     public bool phaseTwo = false;
 
+    public int random;
+
     // Start is called before the first frame update
     void Start()
     {
         if (phaseOne && returneeSpawned)
         {
             Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
-            Debug.Log("Spawn me");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (phaseOneTimer < 10f && phaseOne) 
+        if (phaseOneTimer < 20f && phaseOne) 
         {
             phaseOneTimer += Time.deltaTime;
             if (returneeSpawned == false)
             {   
                 Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
-                Debug.Log("I am spawned again");
                 returneeSpawned = true;
             }
         }
 
-        else if (phaseOneTimer > 10f)
+        else if (phaseOneTimer > 20f)
         {
-            Debug.Log("whre is my supersuit");
             if (returneeSpawned == false)
             {
                 phaseOne = false;
-                Debug.Log("phase two ooga booga");
                 phaseTwo = true;
                 phaseOneTimer = 0f;
             };         
         }
 
-        if (phaseTwoTimer < 10f && phaseTwo)
+        if (phaseTwoTimer < 20f && phaseTwo)
         {
             phaseTwoTimer += Time.deltaTime;
             if (ownerSpawned == false)
             {
-            Instantiate(OwnerPreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
-            Debug.Log("I am owner awo awo");
-            ownerSpawned = true;
+                GameObject Owner = Instantiate(OwnerPreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+                random = Random.Range(0, foundObjects.Count - 1);
+                int randomName = Random.Range(0, allNames.Count - 1);
+
+                Owner.GetComponent<OwnerBehaviour>().ownerName = allNames[random];
+                Owner.GetComponent<OwnerBehaviour>().objectFound = foundObjects[random].GetComponent<ItemDetails>().itemName;
+                Owner.GetComponent<OwnerBehaviour>().objectColour = foundObjects[random].GetComponent<ItemDetails>().itemColour;
+                Owner.GetComponent<OwnerBehaviour>().objectDetails = foundObjects[random].GetComponent<ItemDetails>().itemDetails;
+
+
+                Owner.GetComponent<OwnerReceiveDocument>().receiving = true;
+                ownerSpawned = true;
             }
         }
     }
