@@ -18,7 +18,7 @@ public class ReturneeBehavior : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
-        gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-8f, 2.5f), 3f);
+        gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-6f, 2.5f), 3f);
     }
 
     // Update is called once per frame

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnItem : MonoBehaviour
 {
+
+    public Sprite[] sprites;
+
     public struct spawnedObject
     {
         string spawnedObjectName;
@@ -11,62 +14,62 @@ public class SpawnItem : MonoBehaviour
         string spawnedObjectColour;
     }
 
-    public List<string> allItems = new List <string>(new string[]
+    private List<string> allItems = new List <string>(new string[]
     {
        "Keychain", "Wallet", "Pen", "Glasses", "Umbrella", "Gloves", "Water bottle", "Footwear", "Cutlery", "Jacket" 
     }); 
     
-    public List<string> allColours = new List <string>(new string[]
+    private List<string> allColours = new List <string>(new string[]
     {
-       "Blue", "Yellow", "Red"
+       "Blue", "Green", "Red"
     }); 
 
-    public List<string> keyChainDetails = new List <string>(new string[]
+    private List<string> keyChainDetails = new List <string>(new string[]
     {
         "Just a normal keychain", "A ring for the handle", "It is chained"
     }); 
 
-    public List<string> walletDetails = new List <string>(new string[]
+    private List<string> walletDetails = new List <string>(new string[]
     {
         "Has money", "Has picture", "Empty"
     }); 
 
-    public List<string> penDetails = new List <string>(new string[]
+    private List<string> penDetails = new List <string>(new string[]
     {
         "Has a cap", "Retractable"
     }); 
 
-    public List<string> glassesDetails = new List <string>(new string[]
+    private List<string> glassesDetails = new List <string>(new string[]
     {
         "For shading the eyes", "For Reading"
     }); 
 
-    public List<string> umbrellaDetails = new List <string>(new string[]
+    private List<string> umbrellaDetails = new List <string>(new string[]
     {
-        "Automatically folds and unfolds", "Cane for a handle"
+        "Has a cover", "No cover"
     }); 
 
-    public List<string> glovesDetails = new List <string>(new string[]
+    private List<string> glovesDetails = new List <string>(new string[]
     {
         "Silky", "Fluffy"
     }); 
 
-    public List<string> waterBottleDetails = new List <string>(new string[]
+    private List<string> waterBottleDetails = new List <string>(new string[]
     {
         "Has a handle", "No handle"
     }); 
 
-    public List<string> footWearDetails = new List <string>(new string[]
+    private List<string> footWearDetails = new List <string>(new string[]
     {
         "For casual wear", "Could be used when rainy", "Used for school"
     }); 
 
-    public List<string> cutleryDetails = new List <string>(new string[]
+    private List<string> cutleryDetails = new List <string>(new string[]
     {
         "It has prongs", "It is round", "It is sharp"
     }); 
 
-    public List<string> jacketDetails = new List <string>(new string[]
+    private List<string> jacketDetails = new List <string>(new string[]
     {
         "It has a smooth surface", "It is soft", "It is very fluffy"
     });
@@ -80,6 +83,8 @@ public class SpawnItem : MonoBehaviour
 
         GameObject item = Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
         
+        SpriteRenderer spriteRenderer = item.GetComponent<SpriteRenderer>() as SpriteRenderer;
+      
         item.GetComponent<ItemDetails>().itemName = allItems[Random.Range(0, allItems.Count - 1)];
 
         item.GetComponent<ItemDetails>().itemColour = allColours[Random.Range(0, allColours.Count - 1)];
@@ -87,51 +92,375 @@ public class SpawnItem : MonoBehaviour
         if (item.GetComponent<ItemDetails>().itemName == "Keychain")
         {
             item.GetComponent<ItemDetails>().itemDetails = keyChainDetails[Random.Range(0, keyChainDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Just a normal keychain")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[15];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[16];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[17];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "A ring for the handle")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[18];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[19];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[20];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "It is chained")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[21];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[22];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[23];
+                }
+            }
         }
         
         else if (item.GetComponent<ItemDetails>().itemName == "Wallet")
         {
             item.GetComponent<ItemDetails>().itemDetails = walletDetails[Random.Range(0, walletDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Has money")
+            {
+                spriteRenderer.sprite = sprites[67];
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Has picture")
+            {
+                spriteRenderer.sprite = sprites[68];
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Empty")
+            {
+                spriteRenderer.sprite = sprites[69];
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Pen")
         {
             item.GetComponent<ItemDetails>().itemDetails = penDetails[Random.Range(0, penDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Has a cap")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[36];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[37];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[38];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Retractable")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[39];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[40];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[41];
+                }
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Glasses")
         {
             item.GetComponent<ItemDetails>().itemDetails = glassesDetails[Random.Range(0, glassesDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+            {
+                spriteRenderer.sprite = sprites[51];
+            }
+            else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+            {
+                spriteRenderer.sprite = sprites[52];
+            }
+            else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+            {
+                spriteRenderer.sprite = sprites[53];
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Umbrella")
         {
             item.GetComponent<ItemDetails>().itemDetails = umbrellaDetails[Random.Range(0, umbrellaDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Has a cover")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[60];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[61];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[62];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "No cover")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[63];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[64];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[65];
+                }
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Gloves")
         {
             item.GetComponent<ItemDetails>().itemDetails = glovesDetails[Random.Range(0, glovesDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Silky")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[42];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[43];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[44];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Fluffy")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[30];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[31];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[32];
+                }
+            }
         }
         
-        else if (item.GetComponent<ItemDetails>().itemName == "Waterbottle")
+        else if (item.GetComponent<ItemDetails>().itemName == "Water bottle")
         {
             item.GetComponent<ItemDetails>().itemDetails = waterBottleDetails[Random.Range(0, waterBottleDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "Has a handle")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[54];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[55];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[56];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "No handle")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[57];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[58];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[59];
+                }
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Footwear")
         {
             item.GetComponent<ItemDetails>().itemDetails = footWearDetails[Random.Range(0, footWearDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "For casual wear")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[45];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[46];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[47];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Could be used when rainy")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[3];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[4];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[5];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "Used for school")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[0];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[1];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[2];
+                }
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Cutlery")
         {
             item.GetComponent<ItemDetails>().itemDetails = cutleryDetails[Random.Range(0, cutleryDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "It has prongs")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[9];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[10];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[11];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "It is round")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[48];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[49];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[50];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "It is sharp")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[24];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[25];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[26];
+                }
+            }
         }
 
         else if (item.GetComponent<ItemDetails>().itemName == "Jacket")
         {
             item.GetComponent<ItemDetails>().itemDetails = jacketDetails[Random.Range(0, jacketDetails.Count - 1)];
+            if (item.GetComponent<ItemDetails>().itemDetails == "It has a smooth surface")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[27];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[28];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[29];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "It is soft")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[6];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[7];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[8];
+                }
+            }
+            else if (item.GetComponent<ItemDetails>().itemDetails == "It is very fluffy")
+            {
+                if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
+                {
+                    spriteRenderer.sprite = sprites[12];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Green") 
+                {
+                    spriteRenderer.sprite = sprites[13];
+                }
+                else if (item.GetComponent<ItemDetails>().itemColour == "Red") 
+                {
+                    spriteRenderer.sprite = sprites[14];
+                }
+            }
         }
 
         item.GetComponent<LerpMovement>().moveTo(new Vector2(gameObject.transform.position.x,

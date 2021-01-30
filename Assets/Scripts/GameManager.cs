@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public bool phaseOne = true;
     public bool phaseTwo = false;
 
+    public bool gameFinisherIsCalled = false;
+
     public int random;
 
     // Start is called before the first frame update
@@ -77,5 +79,19 @@ public class GameManager : MonoBehaviour
                 ownerSpawned = true;
             }
         }
+        if (phaseTwoTimer > 20f && gameFinisherIsCalled == false)
+        {
+            finishTheGame();
+            gameFinisherIsCalled = true;
+            
+        }
     }
+
+    void finishTheGame()
+    {
+        GameObject[] documents = GameObject.FindGameObjectsWithTag("Owner Document");
+        int score = documents.Length;
+        Debug.Log("YOUR SCORE IS: " + score);
+    }
+
 }
