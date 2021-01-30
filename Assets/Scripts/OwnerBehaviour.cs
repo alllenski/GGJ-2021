@@ -11,6 +11,11 @@ public class OwnerBehaviour : MonoBehaviour
     public float recievedDocumentTimer = -5;
     GameObject GameManager;
 
+    public float force = 20.0f;
+    private bool receiving = true;
+
+    public bool waiting = false; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,16 @@ public class OwnerBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        
+        if (waiting && receiving && col.tag == "Item")
+        {
+            Destroy(col.gameObject);
+            recievedDocumentTimer = 1f;
+        }
+    }
+
     void Update()
     {
         if (recievedDocumentTimer > 0)
@@ -41,4 +56,5 @@ public class OwnerBehaviour : MonoBehaviour
             recievedDocumentTimer -= Time.deltaTime;
         }
     }
+
 }
