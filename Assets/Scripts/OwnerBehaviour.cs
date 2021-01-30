@@ -5,16 +5,18 @@ using UnityEngine;
 public class OwnerBehaviour : MonoBehaviour
 {
     float timer = 0;
-    string objectFound; 
-    string objectColour;
-    string objectDetails;
+    public string ownerName;
+    public string objectFound; 
+    public string objectColour;
+    public string objectDetails;
     public float recievedDocumentTimer = -5;
     GameObject GameManager;
 
+    
     public float force = 20.0f;
     private bool receiving = true;
 
-    public bool waiting = false; 
+    public bool waitingForObject = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +28,25 @@ public class OwnerBehaviour : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D col)
     {
-        
-        if (waiting && receiving && col.tag == "Item")
+        Debug.Log(objectFound);
+        if (waitingForObject && receiving && col.tag == "Item") 
         {
-            Destroy(col.gameObject);
-            recievedDocumentTimer = 1f;
+            if (col.gameObject.GetComponent<ItemDetails>().itemName == objectFound && 
+            col.gameObject.GetComponent<ItemDetails>().itemColour == objectColour && 
+            col.gameObject.GetComponent<ItemDetails>().itemDetails == objectDetails)
+            {
+                Debug.Log(objectFound);
+                GameManager.GetComponent<GameManager>().foundObjects.Remove(col.gameObject);
+                Destroy(col.gameObject);
+                waitingForObject = false;
+            }
+            else 
+            {
+                Vector2 destination = new Vector2(transform.position.x, transform.position.y - 4.0f);
+                col.gameObject.GetComponent<LerpMovement>().moveTo(destination, 3f);
+            }
         }
+       
     }
 
     void Update()
@@ -47,7 +62,9 @@ public class OwnerBehaviour : MonoBehaviour
         }
         else if (recievedDocumentTimer < -2 && recievedDocumentTimer > -5)
         {
-            Debug.Log("I am gone");
+            Debug.Log(objectFound);
+            Debug.Log(objectColour);
+            Debug.Log(objectDetails);
             Destroy(gameObject);
             GameManager.GetComponent<GameManager>().ownerSpawned = false;
         }
@@ -56,5 +73,6 @@ public class OwnerBehaviour : MonoBehaviour
             recievedDocumentTimer -= Time.deltaTime;
         }
     }
+    
 
 }

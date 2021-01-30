@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 1265408773301334790}
   - component: {fileID: -3426383105692510466}
   m_Layer: 0
-  m_Name: Document
-  m_TagString: Document
+  m_Name: ReturneeDocument
+  m_TagString: Returnee Document
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,3 +176,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLost: 
   objectDetails: 
+  objectColour: 

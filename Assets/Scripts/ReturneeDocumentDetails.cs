@@ -9,8 +9,9 @@ public class ReturneeDocumentDetails : MonoBehaviour
   public string objectColour = string.Empty;
 
   void OnMouseDown()
-  {
-    Debug.Log(objectLost);
-  }
-
+    {
+      Debug.Log(objectLost);
+      Debug.Log(objectDetails);
+      Debug.Log(objectColour);
+    }
 }
