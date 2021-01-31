@@ -26,7 +26,7 @@ public class OwnerBehaviour : MonoBehaviour
     {
         GameManager = GameObject.Find("GameManager");
         gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-6f, 3.2f), 3f);
-        gameObject.GetComponent<SpriteRenderer>().sprite = sadSprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = neutralSprite;
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class OwnerBehaviour : MonoBehaviour
                 GameManager.GetComponent<GameManager>().foundObjects.Remove(col.gameObject);
                 Destroy(col.gameObject);
                 waitingForObject = false;
-                gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
+                gameObject.GetComponent<SpriteRenderer>().sprite = sadSprite;
             }
             else 
             {
@@ -58,6 +58,7 @@ public class OwnerBehaviour : MonoBehaviour
     {
         if (recievedDocumentTimer > 0)
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
             recievedDocumentTimer -= Time.deltaTime;
         }
         else if (recievedDocumentTimer < 0 && recievedDocumentTimer > -1)

@@ -13,12 +13,12 @@ public class MovingTimer : MonoBehaviour
         var gm = gameManager.GetComponent<GameManager>();
         if (gm.phaseOne)
         {
-            float result = Mathf.Lerp (-2f, -4.8f, Mathf.InverseLerp(0f, 21f, gm.phaseOneTimer));
+            float result = Mathf.Lerp (-3.99f, -0.95f, Mathf.InverseLerp(0f, 150f, gm.phaseOneTimer));
             transform.position = new Vector3(result, transform.position.y, transform.position.z);
         }
         else if (gm.phaseTwo)
         {
-            float result = Mathf.Lerp (-4.8f, -1.9f, Mathf.InverseLerp(0f, 21f, gm.phaseTwoTimer));
+            float result = Mathf.Lerp (-0.95f, -3.99f, Mathf.InverseLerp(0f, 150f, gm.phaseTwoTimer));
             transform.position = new Vector3(result, transform.position.y, transform.position.z);
         }
     }

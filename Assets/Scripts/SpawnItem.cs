@@ -6,6 +6,8 @@ public class SpawnItem : MonoBehaviour
 {
 
     public Sprite[] sprites;
+    
+    public AudioClip[] clips;
 
     public struct spawnedObject
     {
@@ -84,6 +86,7 @@ public class SpawnItem : MonoBehaviour
         GameObject item = Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
         
         SpriteRenderer spriteRenderer = item.GetComponent<SpriteRenderer>() as SpriteRenderer;
+        AudioClip audio = clips[0];
       
         item.GetComponent<ItemDetails>().itemName = allItems[Random.Range(0, allItems.Count - 1)];
 
@@ -91,6 +94,7 @@ public class SpawnItem : MonoBehaviour
         
         if (item.GetComponent<ItemDetails>().itemName == "Keychain")
         {
+            audio = clips[1];
             item.GetComponent<ItemDetails>().itemDetails = keyChainDetails[Random.Range(0, keyChainDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Just a normal keychain")
             {
@@ -141,6 +145,7 @@ public class SpawnItem : MonoBehaviour
         
         else if (item.GetComponent<ItemDetails>().itemName == "Wallet")
         {
+            audio = clips[0];
             item.GetComponent<ItemDetails>().itemDetails = walletDetails[Random.Range(0, walletDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Has money")
             {
@@ -158,6 +163,7 @@ public class SpawnItem : MonoBehaviour
 
         else if (item.GetComponent<ItemDetails>().itemName == "Pen")
         {
+            audio = clips[0];
             item.GetComponent<ItemDetails>().itemDetails = penDetails[Random.Range(0, penDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Has a cap")
             {
@@ -176,6 +182,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "Retractable")
             {
+                audio = clips[11];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[39];
@@ -193,6 +200,7 @@ public class SpawnItem : MonoBehaviour
 
         else if (item.GetComponent<ItemDetails>().itemName == "Glasses")
         {
+            audio = clips[0];
             item.GetComponent<ItemDetails>().itemDetails = glassesDetails[Random.Range(0, glassesDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
             {
@@ -213,6 +221,7 @@ public class SpawnItem : MonoBehaviour
             item.GetComponent<ItemDetails>().itemDetails = umbrellaDetails[Random.Range(0, umbrellaDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Has a cover")
             {
+                audio = clips[11];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[60];
@@ -228,6 +237,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "No cover")
             {
+                audio = clips[12];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[63];
@@ -248,6 +258,7 @@ public class SpawnItem : MonoBehaviour
             item.GetComponent<ItemDetails>().itemDetails = glovesDetails[Random.Range(0, glovesDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Silky")
             {
+                audio = clips[6];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[42];
@@ -263,6 +274,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "Fluffy")
             {
+                audio = clips[7];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[30];
@@ -280,6 +292,7 @@ public class SpawnItem : MonoBehaviour
         
         else if (item.GetComponent<ItemDetails>().itemName == "Water bottle")
         {
+            audio = clips[2];
             item.GetComponent<ItemDetails>().itemDetails = waterBottleDetails[Random.Range(0, waterBottleDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "Has a handle")
             {
@@ -318,6 +331,7 @@ public class SpawnItem : MonoBehaviour
             item.GetComponent<ItemDetails>().itemDetails = footWearDetails[Random.Range(0, footWearDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "For casual wear")
             {
+                audio = clips[13];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[45];
@@ -333,6 +347,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "Could be used when rainy")
             {
+                audio = clips[5];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[3];
@@ -348,6 +363,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "Used for school")
             {
+                audio = clips[4];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[0];
@@ -368,6 +384,7 @@ public class SpawnItem : MonoBehaviour
             item.GetComponent<ItemDetails>().itemDetails = cutleryDetails[Random.Range(0, cutleryDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "It has prongs")
             {
+                audio = clips[14];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[9];
@@ -383,6 +400,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "It is round")
             {
+                audio = clips[14];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[48];
@@ -398,6 +416,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "It is sharp")
             {
+                audio = clips[8];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[24];
@@ -418,6 +437,7 @@ public class SpawnItem : MonoBehaviour
             item.GetComponent<ItemDetails>().itemDetails = jacketDetails[Random.Range(0, jacketDetails.Count - 1)];
             if (item.GetComponent<ItemDetails>().itemDetails == "It has a smooth surface")
             {
+                audio = clips[9];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[27];
@@ -433,6 +453,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "It is soft")
             {
+                audio = clips[6];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[6];
@@ -448,6 +469,7 @@ public class SpawnItem : MonoBehaviour
             }
             else if (item.GetComponent<ItemDetails>().itemDetails == "It is very fluffy")
             {
+                audio = clips[7];
                 if (item.GetComponent<ItemDetails>().itemColour == "Blue") 
                 {
                     spriteRenderer.sprite = sprites[12];
@@ -463,6 +485,7 @@ public class SpawnItem : MonoBehaviour
             }
         }
 
+        item.GetComponent<PlayAudio>().audioClip = audio;
         item.GetComponent<LerpMovement>().moveTo(new Vector2(gameObject.transform.position.x,
             gameObject.transform.position.y - 3.0f), 2.0f);
 

@@ -7,6 +7,8 @@ public class OwnerReceiveDocument : MonoBehaviour
 {
     public float force = 20.0f;
     public bool receiving = false;
+    public GameObject detail;
+    public Sprite[] details;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,9 +22,9 @@ public class OwnerReceiveDocument : MonoBehaviour
                 col.gameObject.GetComponent<OwnerDocumentDetails>().objectLost = gameObject.GetComponent<OwnerBehaviour>().objectFound;
                 col.gameObject.GetComponent<OwnerDocumentDetails>().objectColour = gameObject.GetComponent<OwnerBehaviour>().objectColour;
                 col.gameObject.GetComponent<OwnerDocumentDetails>().objectDetails = gameObject.GetComponent<OwnerBehaviour>().objectDetails;
-                Debug.Log("not waiting for object");
+
                 gameObject.GetComponent<OwnerBehaviour>().waitingForObject = true;
-                Debug.Log("now waiting for object");
+
                 
             }
             Vector2 destination = new Vector2(transform.position.x, transform.position.y - 4.0f);

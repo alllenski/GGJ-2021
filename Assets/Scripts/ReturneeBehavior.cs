@@ -47,12 +47,12 @@ public class ReturneeBehavior : MonoBehaviour
 
         if (recievedDocumentTimer > 0)
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
             gameObject.GetComponent<ReturneeReceiveDocument>().receiving = false;
             recievedDocumentTimer -= Time.deltaTime;
         }
         else if (recievedDocumentTimer < 0 && recievedDocumentTimer > -1)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
             gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-13f, 3.2f), 3f);
             recievedDocumentTimer -= Time.deltaTime;
         }

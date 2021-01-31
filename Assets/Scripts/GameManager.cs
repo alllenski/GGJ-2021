@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (phaseOneTimer < 20f && phaseOne) 
+        if (phaseOneTimer < 150f && phaseOne) 
         {
             phaseOneTimer += Time.deltaTime;
             if (returneeSpawned == false)
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        else if (phaseOneTimer > 20f)
+        else if (phaseOneTimer > 150f)
         {
             if (returneeSpawned == false)
             {
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             };         
         }
 
-        if (phaseTwoTimer < 20f && phaseTwo)
+        if (phaseTwoTimer < 150f && phaseTwo)
         {
             phaseTwoTimer += Time.deltaTime;
             if (ownerSpawned == false && foundObjects.Count != 0)
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
                 ownerSpawned = true;
             }
         }
-        if (phaseTwoTimer > 20f && gameFinisherIsCalled == false)
+        if (phaseTwoTimer > 150f && gameFinisherIsCalled == false)
         {
             finishTheGame();
             gameFinisherIsCalled = true;

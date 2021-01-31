@@ -6,22 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class TextSlide : MonoBehaviour
 {
-    public List<string> slides;
-    public Text text;
+    public Sprite[] slides;
+    public AudioClip audioClip;
     private int currentSlide = 0;
 
     void Start()
     {
-        text.text = slides[currentSlide];
+        gameObject.GetComponent<SpriteRenderer>().sprite = slides[currentSlide];
     }
 
-    public void NextSlide()
+    void OnMouseDown()
     {
         currentSlide++;
-        if (currentSlide == slides.Count)
+        if (currentSlide == 3)
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.Stop();
+            audioSource.PlayOneShot(audioClip);
+        }
+        if (currentSlide == slides.Length)
         {
             SceneManager.LoadScene(sceneName:"Game");
         }
-        text.text = slides[currentSlide];
+        gameObject.GetComponent<SpriteRenderer>().sprite = slides[currentSlide];
     }
 }

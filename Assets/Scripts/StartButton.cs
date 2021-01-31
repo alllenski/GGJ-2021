@@ -6,9 +6,22 @@ using UnityEngine.SceneManagement;
 public class StartButton : MonoBehaviour
 {
     
-    public void OnButtonPress()
+    public Sprite idleSprite;
+    public Sprite hoverSprite;
+
+    void OnMouseDown()
     {
         SceneManager.LoadScene(sceneName:"Intro");
+    }
+
+    void OnMouseEnter()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = hoverSprite;
+    }
+
+    void OnMouseExit()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
 
 }
