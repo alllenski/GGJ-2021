@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
         "Sam", "Allen", "Ma-I", "Matthew", "Miguel", "Jonathan", "Hanz", "Dylan", "Gene", "Jericho", "Claude", "Greg", "Jones", "Royce", "Jake", "Julius"
     });
 
+    public Sprite[] neutralKid;
+    public Sprite[] happyKid;
+    public Sprite[] sadKid;
+
     public bool returneeSpawned = true;
     public bool ownerSpawned = false;
 
@@ -33,7 +37,11 @@ public class GameManager : MonoBehaviour
     {
         if (phaseOne && returneeSpawned)
         {
-            Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+            GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+            int random = Random.Range(0, neutralKid.Length);
+            returnee.GetComponent<ReturneeBehavior>().neutralSprite = neutralKid[random];
+            returnee.GetComponent<ReturneeBehavior>().happySprite = happyKid[random];
+            returnee.GetComponent<ReturneeBehavior>().sadSprite = sadKid[random];
         }
     }
 
@@ -45,7 +53,11 @@ public class GameManager : MonoBehaviour
             phaseOneTimer += Time.deltaTime;
             if (returneeSpawned == false)
             {   
-                Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+                GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+                int random = Random.Range(0, neutralKid.Length);
+                returnee.GetComponent<ReturneeBehavior>().neutralSprite = neutralKid[random];
+                returnee.GetComponent<ReturneeBehavior>().happySprite = happyKid[random];
+                returnee.GetComponent<ReturneeBehavior>().sadSprite = sadKid[random];
                 returneeSpawned = true;
             }
         }
@@ -66,7 +78,7 @@ public class GameManager : MonoBehaviour
             if (ownerSpawned == false && foundObjects.Count != 0)
             {
                 GameObject Owner = Instantiate(OwnerPreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
-                random = Random.Range(0, foundObjects.Count - 1);
+                int random = Random.Range(0, foundObjects.Count - 1);
                 int randomName = Random.Range(0, allNames.Count - 1);
 
                 Owner.GetComponent<OwnerBehaviour>().ownerName = allNames[random];
@@ -74,6 +86,10 @@ public class GameManager : MonoBehaviour
                 Owner.GetComponent<OwnerBehaviour>().objectColour = foundObjects[random].GetComponent<ItemDetails>().itemColour;
                 Owner.GetComponent<OwnerBehaviour>().objectDetails = foundObjects[random].GetComponent<ItemDetails>().itemDetails;
 
+                random = Random.Range(0, neutralKid.Length);
+                Owner.GetComponent<OwnerBehaviour>().neutralSprite = neutralKid[random];
+                Owner.GetComponent<OwnerBehaviour>().happySprite = happyKid[random];
+                Owner.GetComponent<OwnerBehaviour>().sadSprite = sadKid[random];
 
                 Owner.GetComponent<OwnerReceiveDocument>().receiving = true;
                 ownerSpawned = true;

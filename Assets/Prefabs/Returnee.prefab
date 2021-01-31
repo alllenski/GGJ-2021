@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9165193772067304149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.63, y: 2.48, z: 0}
-  m_LocalScale: {x: 2.8344069, y: 5.008731, z: 1}
+  m_LocalPosition: {x: -11.63, y: 3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d504632f959c6a47b118f912c2c24e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,6 +185,9 @@ MonoBehaviour:
   objectFound: 
   objectColour: 
   objectDetails: 
+  neutralSprite: {fileID: 0}
+  happySprite: {fileID: 0}
+  sadSprite: {fileID: 0}
   objectSpawn: 0
   recievedDocumentTimer: -5
 --- !u!114 &9165193772067304150
@@ -218,14 +221,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.5066667, y: 6.6466665}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &9165193772067304148
 MonoBehaviour:
@@ -242,3 +245,31 @@ MonoBehaviour:
   force: 20
   receiving: 0
   received: 0
+  detail: {fileID: 1401825807547879703, guid: 54ffc1a7f2bf21943be9473670bf9710, type: 3}
+  details:
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: 69b0963e0256ac44da51d9bdfab14ce5, type: 3}
+  - {fileID: 21300000, guid: e385e8da560fcfe45947cf2d22a89b91, type: 3}
+  - {fileID: 21300000, guid: c0c9c9fb44d3fda4385ba68d528c3577, type: 3}
+  - {fileID: 21300000, guid: bb291118f0967854e9bd51ac9b783fd1, type: 3}
+  - {fileID: 21300000, guid: 1cdc5467a9d1f5245a574619d7d07728, type: 3}
+  - {fileID: 21300000, guid: 3db112beb1db62f4d9171bbe0bad74c0, type: 3}
+  - {fileID: 21300000, guid: 68ddf505dbf9a03459e4903bf036b901, type: 3}
+  - {fileID: 21300000, guid: 4fad11a93c6c24149a7453c745f97c02, type: 3}
+  - {fileID: 21300000, guid: e0081054bc820d8429ae42f38adfd410, type: 3}
+  - {fileID: 21300000, guid: 4b452adce49a4fa48912886892330991, type: 3}
+  - {fileID: 21300000, guid: a013be7ad60df2d438ce3c26a9129cbb, type: 3}
+  - {fileID: 21300000, guid: 23d758c80bdd6614bbfda9ca711589b1, type: 3}
+  - {fileID: 21300000, guid: aa2e695d7a2d1144eb22504e5998348b, type: 3}
+  - {fileID: 21300000, guid: da9e21d6aabf31f4d9921ae9c73c4ee8, type: 3}
+  - {fileID: 21300000, guid: 1cb3810773c4f7d45891fdac693499f1, type: 3}
+  - {fileID: 21300000, guid: cf9fc1ff48cb47245ab8950ab0b1348f, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: c044cb2b7ebc6474eb34d271fcf6c146, type: 3}
+  - {fileID: 21300000, guid: 9568eb9cdf09d25498bdd58c3332aea1, type: 3}
+  - {fileID: 21300000, guid: 0b1841b03e3ab7b449ced1c1b238c860, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}
+  - {fileID: 21300000, guid: 8042e73f776aa734c84de2dd416370b5, type: 3}

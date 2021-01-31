@@ -10,6 +10,10 @@ public class ReturneeBehavior : MonoBehaviour
     public string objectColour;
     public string objectDetails;
 
+    public Sprite neutralSprite;
+    public Sprite happySprite;
+    public Sprite sadSprite;
+
     public bool objectSpawn = false;
     public float recievedDocumentTimer = -5;
     GameObject GameManager;
@@ -18,7 +22,8 @@ public class ReturneeBehavior : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
-        gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-6f, 2.5f), 3f);
+        gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-6f, 3.2f), 3f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sadSprite;
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class ReturneeBehavior : MonoBehaviour
             GameManager.GetComponent<GameManager>().foundObjects.Add(itemReturnee);
 
             objectSpawn = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = neutralSprite;
         }
 
         if (recievedDocumentTimer > 0)
@@ -46,7 +52,8 @@ public class ReturneeBehavior : MonoBehaviour
         }
         else if (recievedDocumentTimer < 0 && recievedDocumentTimer > -1)
         {
-            gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-11.6f, 2.478f), 3f);
+            gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
+            gameObject.GetComponent<LerpMovement>().moveTo(new Vector2(-13f, 3.2f), 3f);
             recievedDocumentTimer -= Time.deltaTime;
         }
         else if (recievedDocumentTimer < -2 && recievedDocumentTimer > -5)
