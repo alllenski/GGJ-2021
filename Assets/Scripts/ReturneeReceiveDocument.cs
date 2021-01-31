@@ -9,8 +9,10 @@ public class ReturneeReceiveDocument : MonoBehaviour
     public bool receiving = false;
     public bool received = false;
     public GameObject detail;
+    public Sprite[] losts;
     public Sprite[] details;
-    
+    public Sprite[] colors;
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (receiving && col.tag == "Returnee Document" && gameObject.GetComponent<ReturneeBehavior>().objectSpawn) 
@@ -24,108 +26,178 @@ public class ReturneeReceiveDocument : MonoBehaviour
 
                 GameObject instantDetail = Instantiate(detail, new Vector3(col.gameObject.transform.position.x + 0.1f, 
                     col.gameObject.transform.position.y - 0.2f, col.gameObject.transform.position.z), Quaternion.identity);
+                GameObject instantColor = Instantiate(detail, new Vector3(col.gameObject.transform.position.x + 0.1f, 
+                    col.gameObject.transform.position.y - 0.12f, col.gameObject.transform.position.z), Quaternion.identity);
+                GameObject instantLosts = Instantiate(detail, new Vector3(col.gameObject.transform.position.x + 0.1f, 
+                    col.gameObject.transform.position.y - 0.6f, col.gameObject.transform.position.z), Quaternion.identity);
 
-                int index = 0;
+                int indexLost = 0;
+
+                if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Keychain")
+                {
+                    indexLost = 0;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Pen")
+                {
+                    indexLost = 1;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Wallet")
+                {
+                    indexLost = 2;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Glasses")
+                {
+                    indexLost = 3;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Umbrella")
+                {
+                    indexLost = 4;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Gloves")
+                {
+                    indexLost = 5;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Water bottle")
+                {
+                    indexLost = 6;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Footwear")
+                {
+                    indexLost = 7;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Cutlery")
+                {
+                    indexLost = 8;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectLost == "Jacket")
+                {
+                    indexLost = 9;
+                }
+
+                int indexColor = 0;
+
+                if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectColour == "Blue")
+                {
+                    indexColor = 0;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectColour == "Green")
+                {
+                    indexColor = 1;
+                }
+                else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectColour == "Red")
+                {
+                    indexColor = 2;
+                }
+
+                int indexDetail = 0;
 
                 if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Just a normal keychain")
                 {
-                    index = 3;
+                    indexDetail = 0;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "A ring for the handle")
                 {
-                    index = 3;
+                    indexDetail = 1;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It is chained")
                 {
-                    index = 3;
+                    indexDetail = 2;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Has money")
                 {
-                    index = 3;
+                    indexDetail = 3;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Has picture")
                 {
-                    index = 4;
+                    indexDetail = 4;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Empty")
                 {
-                    index = 5;
+                    indexDetail = 5;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Has a cap")
                 {
-                    index = 6;
+                    indexDetail = 6;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Retractable")
                 {
-                    index = 7;
+                    indexDetail = 7;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "For shading the eyes")
                 {
-                    index = 8;
-                }
+                    indexDetail = 8;
+                }   
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Has a cover")
                 {
-                    index = 11;
+                    indexDetail = 11;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "No cover")
                 {
-                    index = 12;
+                    indexDetail = 12;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Silky")
                 {
-                    index = 13;
+                    indexDetail = 13;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Fluffy")
                 {
-                    index = 14;
+                    indexDetail = 14;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Has a handle")
                 {
-                    index = 15;
+                    indexDetail = 15;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "No handle")
                 {
-                    index = 16;
+                    indexDetail = 16;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "For casual wear")
                 {
-                    index = 17;
+                    indexDetail = 17;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Could be used when rainy")
                 {
-                    index = 18;
+                    indexDetail = 18;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "Used for school")
                 {
-                    index = 19;
+                    indexDetail = 19;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It has prongs")
                 {
-                    index = 20;
+                    indexDetail = 20;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It is round")
                 {
-                    index = 21;
+                    indexDetail = 21;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It is sharp")
                 {
-                    index = 22;
+                    indexDetail = 22;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It has a smooth surface")
                 {
-                    index = 23;
+                    indexDetail = 23;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It is soft")
                 {
-                    index = 24;
+                    indexDetail = 24;
                 }
                 else if (col.gameObject.GetComponent<ReturneeDocumentDetails>().objectDetails == "It is very fluffy")
                 {
-                    index = 25;
+                    indexDetail = 25;
+                }
+                else 
+                {
+                    indexDetail = 9;
                 }
 
-                instantDetail.GetComponent<SpriteRenderer>().sprite = details[index];
+                instantDetail.GetComponent<SpriteRenderer>().sprite = details[indexDetail];
                 instantDetail.transform.parent = col.gameObject.GetComponent<ReturneeDocumentDetails>().transform;
+                instantColor.GetComponent<SpriteRenderer>().sprite = details[indexColor];
+                instantColor.transform.parent = col.gameObject.GetComponent<ReturneeDocumentDetails>().transform;
+                instantLosts.GetComponent<SpriteRenderer>().sprite = details[indexLost];
+                instantLosts.transform.parent = col.gameObject.GetComponent<ReturneeDocumentDetails>().transform;
 
                 gameObject.GetComponent<ReturneeBehavior>().recievedDocumentTimer = 1f;
                 received = true;

@@ -1552,6 +1552,9 @@ MonoBehaviour:
   phaseTwo: 0
   gameFinisherIsCalled: 0
   random: 0
+  player: {fileID: 4020012008883315621, guid: d9e7f3336ce48e24bbe35f19acb6f33c, type: 3}
+  chat: {fileID: 1052624696607058377, guid: b0ec831fcf5bf6b429c8a6573e5176fb, type: 3}
+  scoresheet: {fileID: 6128638910999381391, guid: 570e6cfec16fd2d498917fc28e307503, type: 3}
 --- !u!4 &1638787057
 Transform:
   m_ObjectHideFlags: 0

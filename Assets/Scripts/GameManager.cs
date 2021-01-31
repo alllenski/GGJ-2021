@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;  
 
 public class GameManager : MonoBehaviour
 {
@@ -32,12 +33,16 @@ public class GameManager : MonoBehaviour
 
     public int random;
 
+    public GameObject player;
+    public GameObject chat;
+    public GameObject scoresheet;
+
     // Start is called before the first frame update
     void Start()
     {
         if (phaseOne && returneeSpawned)
         {
-            GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+            GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 3.17f), Quaternion.identity);
             int random = Random.Range(0, neutralKid.Length);
             returnee.GetComponent<ReturneeBehavior>().neutralSprite = neutralKid[random];
             returnee.GetComponent<ReturneeBehavior>().happySprite = happyKid[random];
@@ -48,12 +53,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (phaseOneTimer < 150f && phaseOne) 
+        if (phaseOneTimer < 10f && phaseOne) 
         {
             phaseOneTimer += Time.deltaTime;
             if (returneeSpawned == false)
             {   
-                GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+                GameObject returnee = Instantiate(ReturneePreFab, new Vector2(-11f, 3.17f), Quaternion.identity);
                 int random = Random.Range(0, neutralKid.Length);
                 returnee.GetComponent<ReturneeBehavior>().neutralSprite = neutralKid[random];
                 returnee.GetComponent<ReturneeBehavior>().happySprite = happyKid[random];
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        else if (phaseOneTimer > 150f)
+        else if (phaseOneTimer > 10f)
         {
             if (returneeSpawned == false)
             {
@@ -72,12 +77,12 @@ public class GameManager : MonoBehaviour
             };         
         }
 
-        if (phaseTwoTimer < 150f && phaseTwo)
+        if (phaseTwoTimer < 10f && phaseTwo)
         {
             phaseTwoTimer += Time.deltaTime;
             if (ownerSpawned == false && foundObjects.Count != 0)
             {
-                GameObject Owner = Instantiate(OwnerPreFab, new Vector2(-11f, 2.5f), Quaternion.identity);
+                GameObject Owner = Instantiate(OwnerPreFab, new Vector2(-11f, 3.17f), Quaternion.identity);
                 int random = Random.Range(0, foundObjects.Count - 1);
                 int randomName = Random.Range(0, allNames.Count - 1);
 
@@ -95,7 +100,7 @@ public class GameManager : MonoBehaviour
                 ownerSpawned = true;
             }
         }
-        if (phaseTwoTimer > 150f && gameFinisherIsCalled == false)
+        if (phaseTwoTimer > 10f && gameFinisherIsCalled == false)
         {
             finishTheGame();
             gameFinisherIsCalled = true;
@@ -106,8 +111,11 @@ public class GameManager : MonoBehaviour
     void finishTheGame()
     {
         GameObject[] documents = GameObject.FindGameObjectsWithTag("Owner Document");
+        Instantiate(player, player.transform.position, Quaternion.identity);
+        Instantiate(chat, chat.transform.position, Quaternion.identity);
+        GameObject sc = Instantiate(scoresheet, scoresheet.transform.position, Quaternion.identity);
         int score = documents.Length;
-        Debug.Log("YOUR SCORE IS: " + score);
+        sc.GetComponentInChildren<Text>().text = score.ToString();
     }
 
 }
